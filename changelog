@@ -1,0 +1,26 @@
+//==================================================================================================
+//
+//== Descrição =====================================================================================
+// Registro de Mudanças
+//== Formatação ====================================================================================
+// {DATA} - (VERSÃO)
+// {DESCRIÇÃO}
+// {*Erakin: rev{REVISÃO}}
+//== Manual ========================================================================================
+// DATA: Dia em que foi feito a mudança no seguinte formato: {DIA}.{MÊS}.{ANO}
+//
+// VERSÃO: Número da versão respectiva a mudança feita: {SEASON}.{EPISÓDIO}.{PATCH}.{REVISÃO}
+//			- SEASON: número da temporada em que o projeto está (anual).
+//			- EPISÓDIO: grande conjunto de mudanças contendo várias novidades (mensal).
+//			- PATCH: pequeno conjunto de mudanças completas pré-planejadas (semanal).
+//			- REVISÃO: quantidade de modificações feitas no projeto (revisão SVN).
+//
+// DESCRIÇÃO: Deve conter todas as informações respectivas as mudanças ocorridas na revisão.
+//				Acompanhando o seguinte formato: {INDENTAÇÃO}- {MENSAGEM}
+//			- INDENTAÇÃO: Deve ser feito através de espaços largos (tabs).
+//			- MENSAGEM: Breve parágrafo para explicar as alterações feitas.
+//==================================================================================================
+
+23.11.2017 - 0.0.1
+- Sistema básico para gerenciamento de LookAndFeel e Theme.
+- Inicio da implementação do tema Black Diamond (Diamante Negro).
