@@ -21,6 +21,12 @@
 //			- MENSAGEM: Breve parágrafo para explicar as alterações feitas.
 //==================================================================================================
 
-23.11.2017 - 0.0.1
+23.11.2017 - 0.0.3
+- Removido implementação dos métodos para criação de bordas que ainda não foram implementadas, AbstractBorderFactory.
+- Mudança lógica na forma como é feito a definição dos valores de UIDefaults em AbstractLookAndFeel.
+- Adicionado ComponentProperties e ComponentPropertie para facilitar o uso visual de UIDefaults.
+- Pequenos ajustes lógicos no desenho de SimpleMenuBorder.
+
+23.11.2017 - 0.0.2
 - Sistema básico para gerenciamento de LookAndFeel e Theme.
 - Inicio da implementação do tema Black Diamond (Diamante Negro).

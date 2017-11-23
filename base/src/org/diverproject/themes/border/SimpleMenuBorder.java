@@ -1,7 +1,9 @@
 package org.diverproject.themes.border;
 
+import java.awt.BasicStroke;
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Insets;
 
 import javax.swing.JMenuItem;
@@ -17,7 +19,6 @@ public class SimpleMenuBorder extends AbstractBorder implements UIResource
 {
 	private static final long serialVersionUID = 3733125383745956657L;
 	private static final Insets INSETS = new Insets(2, 2, 2, 2);
-	private static final Insets OFFSET = new Insets(2, 2, 2, 2);
 
 	public AbstractLookAndFeel LookAndFeel()
 	{
@@ -42,41 +43,34 @@ public class SimpleMenuBorder extends AbstractBorder implements UIResource
 		// Borda visível apenas se o menu estiver ativo
 		if (mi.getModel().isArmed() || mi.getModel().isSelected())
 		{
+			Graphics2D g2d = (Graphics2D) g;
+			int offset = 3;
+
 			// Preenchimento do espaço fora da borda (Top, Right, Bottom, Left
-			{
-				g.setColor(Colors().getBackground());
-
-				for (int by = 0; by < OFFSET.top; by++)
-					g.drawLine(0, by, width, by);
-
-				for (int bx = 0; bx <= OFFSET.right; bx++)
-					g.drawLine(width - bx - 1, 0, width - bx - 1, height);
-
-				for (int by = 0; by <= OFFSET.top; by++)
-					g.drawLine(0, height - by - 1, width, height - by - 1);
-
-				for (int bx = 0; bx <= OFFSET.left; bx++)
-					g.drawLine(bx, 0, bx, height);
-			}
+			g2d.setColor(Colors().getBackground());
+			g2d.setStroke(new BasicStroke(offset * 2)); // Stroke considera width a soma dos dois lados
+			g2d.drawRect(0, 0, width - 1, height - 1);
 
 			// Desenho das bordas
-			{
-				int tx = x + OFFSET.left;
-				int ty = y + OFFSET.top;
-				int twidth = width - OFFSET.right;
-				int theight = height - OFFSET.bottom;
+			int tx = x + offset;
+			int ty = y + offset;
+			int twidth = width - offset;
+			int theight = height - offset;
 
-				// Bordas mais claras (Top, Bottom)
-				g.setColor(Colors().getBorderBrighter());
-				g.drawLine(tx + 2    , ty + 1     , twidth - 3, ty + 1);
+			// Bordas mais escuras (Top, Right, Bottom, Left)
+			g2d.setStroke(new BasicStroke(1));
 
-				// Bordas mais escuras (Top, Right, Bottom, Left)
-				g.setColor(Colors().getBorderDarker());
-				g.drawLine(tx + 2    , ty + 0     , twidth - 2, ty + 0);
-				g.drawLine(twidth - 2, ty + 1     , twidth - 2, theight - 3);
-				g.drawLine(tx + 2    , theight - 2, twidth - 2, theight - 2);
-				g.drawLine(tx + 1    , ty + 1     , tx + 1    , theight - 3);
-			}
+			g2d.setColor(Colors().getBorderDarker());
+			g2d.drawLine(tx + 2    , ty + 0     , twidth - 4, ty + 0);
+			g2d.drawLine(twidth - 2, ty + 1     , twidth - 2, theight - 3);
+			g2d.drawLine(tx + 2    , theight - 2, twidth - 4, theight - 2);
+			g2d.drawLine(tx + 0    , ty + 1     , tx + 0    , theight - 3);
+
+			// Bordas mais claras (Top, Bottom)
+			g2d.setColor(Colors().getBorderBrighter().darker());
+			g2d.drawLine(tx + 2    , ty + 1     , twidth - 4, ty + 1);
+			g2d.setColor(Colors().getBorderBrighter());
+			g2d.drawLine(tx + 3    , ty + 2     , twidth - 5, ty + 2);
 		}
 	}
 
