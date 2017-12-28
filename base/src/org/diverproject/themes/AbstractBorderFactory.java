@@ -8,4 +8,5 @@ public interface AbstractBorderFactory
 	public Border getMenuBarBorder();
 	public Border getMenuBorder();
 	public Border getPopupMenuBorder();
+	public Border getPopupMenuItemBorder();
 }

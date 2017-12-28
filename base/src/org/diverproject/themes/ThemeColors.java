@@ -54,4 +54,45 @@ public class ThemeColors
 
 		return color;
 	}
+
+	public static Color brighter(Color color, double percentage)
+	{
+		if (color == null)
+			return null;
+
+		double r = color.getRed();
+		double g = color.getGreen();
+		double b = color.getBlue();
+
+		double rd = 255.0 - r;
+		double gd = 255.0 - g;
+		double bd = 255.0 - b;
+
+		r += (rd * percentage) / 100.0;
+		g += (gd * percentage) / 100.0;
+		b += (bd * percentage) / 100.0;
+
+		return createColor((int) r, (int) g, (int) b);
+	}
+
+	public static Color darker(Color color, double percentage)
+	{
+		if (color == null)
+			return null;
+
+		double r = color.getRed();
+		double g = color.getGreen();
+		double b = color.getBlue();
+
+		r -= (r * percentage) / 100.0;
+		g -= (g * percentage) / 100.0;
+		b -= (b * percentage) / 100.0;
+
+		return createColor((int) r, (int) g, (int) b);
+	}
+
+	public static Color createColor(int r, int g, int b)
+	{
+		return new Color(((r & 0xFF) << 16) | ((g & 0xFF) << 8) | ((b & 0xFF)));
+	}
 }

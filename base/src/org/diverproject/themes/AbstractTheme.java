@@ -15,19 +15,20 @@ public abstract class AbstractTheme extends MetalTheme
 	public static final int BASE_FONT_STYLE = Font.PLAIN;
 	public static final int BASE_FONT_SIZE = 12;
 
-    public static final ColorUIResource WHITE = new ColorUIResource(Color.WHITE);
-    public static final ColorUIResource LIGHT_GRAY = new ColorUIResource(Color.LIGHT_GRAY);
-    public static final ColorUIResource GRAY = new ColorUIResource(Color.GRAY);
-    public static final ColorUIResource DARK_GRAY = new ColorUIResource(Color.DARK_GRAY);
-    public static final ColorUIResource BLACK = new ColorUIResource(Color.BLACK);
-    public static final ColorUIResource RED = new ColorUIResource(Color.RED);
-    public static final ColorUIResource PINK = new ColorUIResource(Color.PINK);
-    public static final ColorUIResource ORANGE = new ColorUIResource(Color.ORANGE);
-    public static final ColorUIResource YELLOW = new ColorUIResource(Color.YELLOW);
-    public static final ColorUIResource GREEN = new ColorUIResource(Color.GREEN);
-    public static final ColorUIResource MAGENTA = new ColorUIResource(Color.MAGENTA);
-    public static final ColorUIResource CYAN = new ColorUIResource(Color.CYAN);
-    public static final ColorUIResource BLUE = new ColorUIResource(Color.BLUE);
+	public static final ColorUIResource TRANSPARENT = new ColorUIResource(new Color(0, 0, 0, 0));
+	public static final ColorUIResource WHITE = new ColorUIResource(Color.WHITE);
+	public static final ColorUIResource LIGHT_GRAY = new ColorUIResource(Color.LIGHT_GRAY);
+	public static final ColorUIResource GRAY = new ColorUIResource(Color.GRAY);
+	public static final ColorUIResource DARK_GRAY = new ColorUIResource(Color.DARK_GRAY);
+	public static final ColorUIResource BLACK = new ColorUIResource(Color.BLACK);
+	public static final ColorUIResource RED = new ColorUIResource(Color.RED);
+	public static final ColorUIResource PINK = new ColorUIResource(Color.PINK);
+	public static final ColorUIResource ORANGE = new ColorUIResource(Color.ORANGE);
+	public static final ColorUIResource YELLOW = new ColorUIResource(Color.YELLOW);
+	public static final ColorUIResource GREEN = new ColorUIResource(Color.GREEN);
+	public static final ColorUIResource MAGENTA = new ColorUIResource(Color.MAGENTA);
+	public static final ColorUIResource CYAN = new ColorUIResource(Color.CYAN);
+	public static final ColorUIResource BLUE = new ColorUIResource(Color.BLUE);
 
 	public static final ColorUIResource PRIMARY_COLOR_1 = new ColorUIResource(0, 0, 0);
 	public static final ColorUIResource PRIMARY_COLOR_2 = new ColorUIResource(255, 0, 0);
@@ -61,10 +62,12 @@ public abstract class AbstractTheme extends MetalTheme
 	protected FontUIResource menuItemFont;
 
 	protected MenuColors menuColors;
+	protected MenuColors menuItemColors;
 
 	public AbstractTheme()
 	{
 		menuColors = new MenuColors(WHITE, DARK_GRAY);
+		menuItemColors = new MenuColors(WHITE, DARK_GRAY);
 		menuFont = menuTextFont;
 		menuItemFont = menuTextFont;
 	}
@@ -182,18 +185,23 @@ public abstract class AbstractTheme extends MetalTheme
 		return menuColors.getDisabledForeground();
 	}
 
-	public MenuColors getMenuColors()
-	{
-		return menuColors;
-	}
-
 	public FontUIResource getMenuFont()
 	{
 		return menuFont;
 	}
 
-    public FontUIResource getMenuItemFont()
+	public FontUIResource getMenuItemFont()
 	{
 		return menuItemFont;
+	}
+
+	public MenuColors getMenuColors()
+	{
+		return menuColors;
+	}
+
+	public MenuColors getMenuItemColors()
+	{
+		return menuItemColors;
 	}
 }

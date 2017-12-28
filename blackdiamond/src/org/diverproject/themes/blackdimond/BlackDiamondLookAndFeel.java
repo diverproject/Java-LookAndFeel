@@ -1,18 +1,20 @@
 package org.diverproject.themes.blackdimond;
 
-import javax.swing.UIDefaults;
-
 import org.diverproject.themes.AbstractLookAndFeel;
-import org.diverproject.themes.component.SimpleMenuBarUI;
-import org.diverproject.themes.component.SimpleMenuUI;
-import org.diverproject.themes.component.SimplePopupMenuUI;
+import org.diverproject.themes.ComponentProperties;
 
 public class BlackDiamondLookAndFeel extends AbstractLookAndFeel
 {
 	private static final long serialVersionUID = 8809429476998940167L;
 	private static final BlackDiamondLookAndFeel INSTANCE = new BlackDiamondLookAndFeel();
 
-	private final BlackDiamondTheme theme = new BlackDiamondTheme();
+	private BlackDiamondTheme theme;
+
+	@Override
+	protected void createDefaultTheme()
+	{
+		theme = new BlackDiamondTheme();
+	}
 
 	public BlackDiamondTheme getTheme()
 	{
@@ -62,59 +64,21 @@ public class BlackDiamondLookAndFeel extends AbstractLookAndFeel
 	}
 
 	@Override
-	protected void initClassDefaults(UIDefaults table)
+	protected void initClassDefaults(ComponentProperties properties)
 	{
-		super.initClassDefaults(table);
-
-		table.putDefaults(new Object[]
-		{
-			           "MenuBarUI", SimpleMenuBarUI.class.getName(),
-			              "MenuUI", SimpleMenuUI.class.getName(),
-			         "PopupMenuUI", SimplePopupMenuUI.class.getName(),
-			/*
-			          "MenuItemUI", SimpleMenuItemUI.class.getName(),
-			"PopupMenuSeparatorUI", SimplePopupMenuSeparatorUI.class.getName(),
-			          "CheckBoxUI", SimpleCheckBoxUI.class.getName(),
-			          "ComboBoxUI", SimpleComboBoxUI.class.getName(),
-			       "DesktopIconUI", SimpleDesktopIconUI.class.getName(),
-			       "FileChooserUI", SimpleFileChooserUI.class.getName(),
-			     "InternalFrameUI", SimpleInternalFrameUI.class.getName(),
-			             "LabelUI", SimpleLabelUI.class.getName(),
-			"PopupMenuSeparatorUI", SimplePopupMenuSeparatorUI.class.getName(),
-			       "ProgressBarUI", SimpleProgressBarUI.class.getName(),
-			       "RadioButtonUI", SimpleRadioButtonUI.class.getName(),
-			         "ScrollBarUI", SimpleScrollBarUI.class.getName(),
-			        "ScrollPaneUI", SimpleScrollPaneUI.class.getName(),
-			         "SeparatorUI", SimpleSeparatorUI.class.getName(),
-			            "SliderUI", SimpleSliderUI.class.getName(),
-			         "SplitPaneUI", SimpleSplitPaneUI.class.getName(),
-			        "TabbedPaneUI", SimpleTabbedPaneUI.class.getName(),
-			         "TextFieldUI", SimpleTextFieldUI.class.getName(),
-			      "ToggleButtonUI", SimpleToggleButtonUI.class.getName(),
-			           "ToolBarUI", SimpleToolBarUI.class.getName(),
-			           "ToolTipUI", SimpleToolTipUI.class.getName(),
-			              "TreeUI", SimpleTreeUI.class.getName(),
-			          "RootPaneUI", SimpleRootPaneUI.class.getName(),
-			*/
-		});
+		super.initClassDefaults(properties);
 	}
 
 	@Override
-	protected void initComponentDefaults(UIDefaults table)
+	protected void initFontsDefaults(ComponentProperties properties)
 	{
-		super.initComponentDefaults(table);
+		super.initFontsDefaults(properties);
+	}
 
-		// FIXME por que caralhos não funfa?
-		table.putDefaults(new Object[]
-		{
-			           "MenuBar.font", theme.getMenuFont(),
-			              "Menu.font", theme.getMenuFont(),
-			         "PopupMenu.font", theme.getMenuFont(),
-
-			         "MenuBar.border", getBorderFactory().getMenuBarBorder(),
-			            "Menu.border", getBorderFactory().getMenuBorder(),
-			       "PopupMenu.border", getBorderFactory().getPopupMenuBorder(),
-		});
+	@Override
+	protected void initBordersDefaults(ComponentProperties properties)
+	{
+		super.initBordersDefaults(properties);
 	}
 
 	public static BlackDiamondLookAndFeel getInstance()

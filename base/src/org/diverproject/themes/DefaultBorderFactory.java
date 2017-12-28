@@ -23,4 +23,10 @@ public class DefaultBorderFactory implements AbstractBorderFactory
 	{
 		return BorderFactory.createEmptyBorder(1, 1, 1, 1);
 	}
+
+	@Override
+	public Border getPopupMenuItemBorder()
+	{
+		return BorderFactory.createEmptyBorder(1, 1, 1, 1);
+	}
 }

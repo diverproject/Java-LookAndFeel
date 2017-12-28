@@ -21,6 +21,20 @@
 //			- MENSAGEM: Breve parágrafo para explicar as alterações feitas.
 //==================================================================================================
 
+28.12.2017 - 0.0.4
+- AbstractBorderFactory.getPopupMenuItemBorder() adicionado e consequentemente DefaultBorderFactory.
+- AbstractLookAndFeel atualizado para considerar super.initComponentDefaults().
+	- Também foi incrementado à initSystemColorDefaults() um  initColorsDefaults() para facilitar as definições.
+	- As fontes utilizadas em MenuItem e PopupMenuItem por padrão será o mesmo de MenuItem.
+- Corrigido MenuColors onde setDisabledForeground() estava sendo chamado como setForeground().
+- Movido todo o conteúdo de ColorUtil para ThemeColors.
+- Atualizado SimpleMenuBarUI, SimpleMenuUI e SimplePopupMenuUI para funcionar com ThemeUIFunctions.
+- Pequenas mudanças em SimplePopupMenuUI para que considere isMenuOpaque() no lugar de 'robot != null'.
+- Duas novas propriedades à ColorUIResource que permite definir a cor e se permite rolar.
+- Novas propriedades adicionadas à ComponentProperties, todos os valores de base definidos.
+- Alterado font usada em BlackDiamondTheme de 'Tahoma 14' para 'Dialog 12'.
+- Atualizado BlackDiamondLookAndFeel para funcionar com o novo sistema de ComponentProperties.
+
 23.11.2017 - 0.0.3
 - Removido implementação dos métodos para criação de bordas que ainda não foram implementadas, AbstractBorderFactory.
 - Mudança lógica na forma como é feito a definição dos valores de UIDefaults em AbstractLookAndFeel.

@@ -1,5 +1,7 @@
 package org.diverproject.themes.component;
 
+import static org.diverproject.themes.component.ThemesUIFunctions.*;
+
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -16,44 +18,25 @@ import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import javax.swing.plaf.basic.BasicPopupMenuUI;
 
-import org.diverproject.themes.AbstractLookAndFeel;
-import org.diverproject.themes.AbstractTheme;
-import org.diverproject.themes.DiverProjectTheme;
-import org.diverproject.themes.colors.MenuColors;
-
 public class SimplePopupMenuUI extends BasicPopupMenuUI
 {
-	public static SimplePopupMenuUI createUI(JComponent c)
-	{
-		return new SimplePopupMenuUI();
-	}
+	private static Robot robot;
 
-	public AbstractLookAndFeel LookAndFeel()
-	{
-		return DiverProjectTheme.getCurrentLookAndFeel();
-	}
-
-	public AbstractTheme Theme()
-	{
-		return DiverProjectTheme.getCurrentLookAndFeel().getTheme();
-	}
-
-	public MenuColors Colors()
-	{
-		return DiverProjectTheme.getCurrentLookAndFeel().getTheme().getMenuColors();
-	}
-
-	protected Robot robot;
-	protected BufferedImage screenImage;
-	protected FadePopupListener fadeListener;
-
-	public SimplePopupMenuUI()
+	static
 	{
 		try {
 			robot = new Robot();
 		} catch (Exception e) {
 		}
 	}
+
+	public static SimplePopupMenuUI createUI(JComponent c)
+	{
+		return new SimplePopupMenuUI();
+	}
+
+	protected BufferedImage screenImage;
+	protected FadePopupListener fadeListener;
 
 	@Override
 	public void installUI(JComponent c)
@@ -74,13 +57,19 @@ public class SimplePopupMenuUI extends BasicPopupMenuUI
 	{
 		super.installListeners();
 
-		popupMenu.addPopupMenuListener((fadeListener = new FadePopupListener(this)));
+		if (!isMenuOpaque())
+			popupMenu.addPopupMenuListener((fadeListener = new FadePopupListener(this)));
 	}
 
 	@Override
 	protected void uninstallListeners()
 	{
-		popupMenu.removePopupMenuListener(fadeListener);
+		if (!isMenuOpaque() && fadeListener != null)
+		{
+			popupMenu.removePopupMenuListener(fadeListener);
+			fadeListener = null;
+		}
+
 		super.uninstallListeners();
 	}
 
@@ -89,7 +78,7 @@ public class SimplePopupMenuUI extends BasicPopupMenuUI
 	{
 		Popup popup = super.getPopup(popupMenu, x, y);
 
-		if (robot != null)
+		if (!isMenuOpaque())
 		{
 			try {
 
@@ -120,9 +109,14 @@ public class SimplePopupMenuUI extends BasicPopupMenuUI
 			g.drawImage(screenImage, 0, 0, null);
 		else
 		{
-			g.setColor(Theme().getMenuBackground());
+			g.setColor(MenuColors().getBackground());
 			g.fillRect(0, 0, c.getWidth(), c.getHeight());
 		}
+	}
+
+	private boolean isMenuOpaque()
+	{
+		return robot != null;
 	}
 
 	private void resetScreenImage()

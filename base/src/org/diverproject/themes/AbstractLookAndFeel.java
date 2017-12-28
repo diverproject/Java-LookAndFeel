@@ -30,8 +30,23 @@ public abstract class AbstractLookAndFeel extends MetalLookAndFeel
 		componentProperties.setUIDefaults(table);
 
 		initClassDefaults(componentProperties);
+	}
+
+	@Override
+	protected void initComponentDefaults(UIDefaults table)
+	{
+		super.initComponentDefaults(table);
+
 		initFontsDefaults(componentProperties);
 		initBordersDefaults(componentProperties);
+	}
+
+	@Override
+	protected void initSystemColorDefaults(UIDefaults table)
+	{
+		super.initSystemColorDefaults(table);
+
+		initColorsDefaults(componentProperties);
 	}
 
 	protected void initClassDefaults(ComponentProperties properties)
@@ -72,6 +87,8 @@ public abstract class AbstractLookAndFeel extends MetalLookAndFeel
 		properties.getMenuBar().setFont(getTheme().getMenuFont());
 		properties.getMenu().setFont(getTheme().getMenuFont());
 		properties.getPopupMenu().setFont(getTheme().getMenuFont());
+		properties.getMenuItem().setFont(getTheme().getMenuItemFont());
+		properties.getPopupMenuItem().setFont(getTheme().getMenuItemFont());
 	}
 
 	protected void initBordersDefaults(ComponentProperties properties)
@@ -79,5 +96,12 @@ public abstract class AbstractLookAndFeel extends MetalLookAndFeel
 		properties.getMenuBar().setBorder(getBorderFactory().getMenuBarBorder());
 		properties.getMenu().setBorder(getBorderFactory().getMenuBorder());
 		properties.getPopupMenu().setBorder(getBorderFactory().getPopupMenuBorder());
+	}
+
+	protected void initColorsDefaults(ComponentProperties properties)
+	{
+		properties.getMenu().setColor(getTheme().getMenuColors().getBackground());
+		properties.getMenu().setColor(getTheme().getMenuColors().getForeground());
+		properties.getMenuBar().setRolloverEnabled(true);
 	}
 }

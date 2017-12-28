@@ -22,7 +22,7 @@ public class MenuColors
 		setSelectedBackground(new ColorUIResource(backgroundColor.darker()));
 		setForeground(new ColorUIResource(textColor));
 		setDisabledBackground(new ColorUIResource(backgroundColor.darker()));
-		setForeground(new ColorUIResource(background.brighter().brighter()));
+		setDisabledForeground(new ColorUIResource(background.brighter().brighter()));
 		setBorderBrighter(new ColorUIResource(background.brighter()));
 		setBorderDarker(new ColorUIResource(background.darker()));
 	}

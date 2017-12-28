@@ -1,11 +1,12 @@
 package org.diverproject.themes.component;
 
+import static org.diverproject.themes.component.ThemesUIFunctions.*;
+
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ButtonModel;
@@ -17,31 +18,11 @@ import javax.swing.event.MouseInputListener;
 import javax.swing.plaf.basic.BasicGraphicsUtils;
 import javax.swing.plaf.basic.BasicMenuUI;
 
-import org.diverproject.themes.AbstractLookAndFeel;
-import org.diverproject.themes.AbstractTheme;
-import org.diverproject.themes.DiverProjectTheme;
-import org.diverproject.themes.colors.MenuColors;
-
 public class SimpleMenuUI extends BasicMenuUI
 {
 	public static SimpleMenuUI createUI(JComponent c)
 	{
 		return new SimpleMenuUI();
-	}
-
-	public AbstractLookAndFeel LookAndFeel()
-	{
-		return DiverProjectTheme.getCurrentLookAndFeel();
-	}
-
-	public AbstractTheme Theme()
-	{
-		return DiverProjectTheme.getCurrentLookAndFeel().getTheme();
-	}
-
-	public MenuColors Colors()
-	{
-		return DiverProjectTheme.getCurrentLookAndFeel().getTheme().getMenuColors();
 	}
 
 	@Override
@@ -89,19 +70,19 @@ public class SimpleMenuUI extends BasicMenuUI
 
 		if (!model.isEnabled())
 		{
-			g.setColor(Colors().getDisabledBackground());
+			g.setColor(MenuColors().getDisabledBackground());
 			g.fillRect(0, 0, width, height);
 		}
 
 		if (model.isArmed() || model.isRollover() || (c instanceof JMenu && model.isSelected()))
 		{
-			g.setColor(Colors().getSelectedBackground());
+			g.setColor(MenuColors().getSelectedBackground());
 			g.fillRect(0, 0, width, height);
 		}
 
 		else
 		{
-			g.setColor(Colors().getBackground());
+			g.setColor(MenuColors().getBackground());
 			g.fillRect(0, 0, width, height);
 		}
 	}
@@ -114,28 +95,22 @@ public class SimpleMenuUI extends BasicMenuUI
 		FontMetrics fm = g2D.getFontMetrics();
 		int mnemIndex = menuItem.getDisplayedMnemonicIndex();
 
-		Object currentRenderingHint = g2D.getRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING);
+		if (!model.isEnabled())
 		{
-			g2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-
-			if (!model.isEnabled())
-			{
-				g2D.setColor(Colors().getDisabledForeground().brighter());
-				BasicGraphicsUtils.drawStringUnderlineCharAt(g2D, text, mnemIndex, textRect.x,  textRect.y + fm.getAscent());
-				g2D.setColor(Colors().getDisabledForeground().darker());
-				BasicGraphicsUtils.drawStringUnderlineCharAt(g2D, text, mnemIndex, textRect.x - 1,  textRect.y + fm.getAscent() - 1);
-			}
-			else
-			{
-				if (model.isArmed() || model.isRollover() || model.isSelected())
-					g2D.setColor(Colors().getSelectedForeground());
-				else
-					g2D.setColor(Colors().getForeground());
-
-				BasicGraphicsUtils.drawStringUnderlineCharAt(g2D, text, mnemIndex, textRect.x,  textRect.y + fm.getAscent());
-			}
+			g2D.setColor(MenuColors().getDisabledForeground().brighter());
+			BasicGraphicsUtils.drawStringUnderlineCharAt(g2D, text, mnemIndex, textRect.x,  textRect.y + fm.getAscent());
+			g2D.setColor(MenuColors().getDisabledForeground().darker());
+			BasicGraphicsUtils.drawStringUnderlineCharAt(g2D, text, mnemIndex, textRect.x - 1,  textRect.y + fm.getAscent() - 1);
 		}
-		g2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, currentRenderingHint);
+		else
+		{
+			if (model.isArmed() || model.isRollover() || model.isSelected())
+				g2D.setColor(MenuColors().getSelectedForeground());
+			else
+				g2D.setColor(MenuColors().getForeground());
+
+			BasicGraphicsUtils.drawStringUnderlineCharAt(g2D, text, mnemIndex, textRect.x,  textRect.y + fm.getAscent());
+		}
 	}
 
 	@Override
