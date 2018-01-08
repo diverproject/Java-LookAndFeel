@@ -4,8 +4,11 @@ import javax.swing.UIDefaults;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import org.diverproject.themes.component.SimpleMenuBarUI;
+import org.diverproject.themes.component.SimpleMenuItemUI;
 import org.diverproject.themes.component.SimpleMenuUI;
+import org.diverproject.themes.component.SimplePopupMenuItemUI;
 import org.diverproject.themes.component.SimplePopupMenuUI;
+import org.diverproject.themes.component.SimpleRootPaneUI;
 
 public abstract class AbstractLookAndFeel extends MetalLookAndFeel
 {
@@ -51,9 +54,12 @@ public abstract class AbstractLookAndFeel extends MetalLookAndFeel
 
 	protected void initClassDefaults(ComponentProperties properties)
 	{
+		properties.getRootPane().setUI(SimpleRootPaneUI.class);
 		properties.getMenuBar().setUI(SimpleMenuBarUI.class);
 		properties.getMenu().setUI(SimpleMenuUI.class);
 		properties.getPopupMenu().setUI(SimplePopupMenuUI.class);
+		properties.getMenuItem().setUI(SimpleMenuItemUI.class);
+		properties.getPopupMenuItem().setUI(SimplePopupMenuItemUI.class);
 
 		/*
 			          "MenuItemUI", SimpleMenuItemUI.class.getName(),
@@ -96,10 +102,30 @@ public abstract class AbstractLookAndFeel extends MetalLookAndFeel
 		properties.getMenuBar().setBorder(getBorderFactory().getMenuBarBorder());
 		properties.getMenu().setBorder(getBorderFactory().getMenuBorder());
 		properties.getPopupMenu().setBorder(getBorderFactory().getPopupMenuBorder());
+		properties.getMenuItem().setBorder(getBorderFactory().getMenuItemBorder());
+		properties.getPopupMenuItem().setBorder(getBorderFactory().getPopupMenuItemBorder());
 	}
 
 	protected void initColorsDefaults(ComponentProperties properties)
 	{
+		properties.getDesktop().setColor(getTheme().getCaptionColors().getBackground());
+		properties.getActiveCaption().setColor(getTheme().getCaptionColors().getBackground());
+		properties.getActiveCaptionText().setColor(getTheme().getCaptionColors().getForeground());
+		properties.getActiveCaptionBorder().setColor(getTheme().getCaptionColors().getBorder());
+		properties.getActiveCaption().setColor(getTheme().getCaptionColors().getInactiveBackground());
+		properties.getActiveCaptionText().setColor(getTheme().getCaptionColors().getInactiveForeground());
+		properties.getActiveCaptionBorder().setColor(getTheme().getCaptionColors().getInactiveBorder());
+
+		properties.getWindow().setColor(getTheme().getWindowColors().getBackground());
+		properties.getWindowBorder().setColor(getTheme().getWindowColors().getBorder());
+		properties.getWindowText().setColor(getTheme().getWindowColors().getForeground());
+
+		properties.getText().setColor(getTheme().getTextColors().getBackground());
+		properties.getTextText().setColor(getTheme().getTextColors().getForeground());
+		properties.getTextHighlight().setColor(getTheme().getTextColors().getHightlightBackground());
+		properties.getTextHighlightText().setColor(getTheme().getTextColors().getHightlightForeground());
+		properties.getTextInactiveText().setColor(getTheme().getTextColors().getDisabledForeground());
+
 		properties.getMenu().setColor(getTheme().getMenuColors().getBackground());
 		properties.getMenu().setColor(getTheme().getMenuColors().getForeground());
 		properties.getMenuBar().setRolloverEnabled(true);

@@ -21,6 +21,17 @@
 //			- MENSAGEM: Breve parágrafo para explicar as alterações feitas.
 //==================================================================================================
 
+08.01.2018 - 0.0.5
+- DefaultIcon não estava carregando os recursos corretamente, toString() adaptado.
+- Pequenos ajustes para que AbstractBorderFactory trabalhe com DefaultIcon ao invés de Icon.
+- Novos componentes de interface gráfica implementados:
+	- SimpleMenuItemUI para os itens exibidos na barra de menu.
+	- SimplePopupMenuUI para a caixa que exibe os itens na barra de menu.
+	- SimpleRootPaneUI para o layout principal das janelas.
+	- SimpleTitlePane para personalizar a barra de título das janelas.	
+		- Já está funcional como minimizar, maximizar, fechar e redimensionar.
+		- Necessário alguns recursos gráficos.
+
 28.12.2017 - 0.0.4
 - AbstractBorderFactory.getPopupMenuItemBorder() adicionado e consequentemente DefaultBorderFactory.
 - AbstractLookAndFeel atualizado para considerar super.initComponentDefaults().

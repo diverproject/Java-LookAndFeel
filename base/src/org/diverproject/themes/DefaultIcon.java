@@ -10,6 +10,8 @@ import java.awt.Graphics;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import org.diverproject.util.ObjectDescription;
+
 public class DefaultIcon implements Icon
 {
 	public static final int DEFAULT_SIZE = 16;
@@ -26,7 +28,7 @@ public class DefaultIcon implements Icon
 
 	public DefaultIcon(String classPath, String name, String extension)
 	{
-		namepath = format("%s/%s.%s", classPath, name, extension);
+		namepath = format("/%s/%s.%s", classPath, name, extension);
 	}
 
 	private Icon getIcon()
@@ -34,7 +36,7 @@ public class DefaultIcon implements Icon
 		if (icon == null)
 			try {
 				icon = new ImageIcon(DefaultIcon.class.getResource(namepath));
-			} catch (RuntimeException e) {
+			} catch (RuntimeException ase) {
 				logError("'%s' não encontrado.", getNamePath());
 			}
 
@@ -71,5 +73,15 @@ public class DefaultIcon implements Icon
 	public String getNamePath()
 	{
 		return namepath;
+	}
+
+	@Override
+	public String toString()
+	{
+		ObjectDescription description = new ObjectDescription(getClass());
+
+		description.append(getNamePath());
+
+		return description.toString();
 	}
 }

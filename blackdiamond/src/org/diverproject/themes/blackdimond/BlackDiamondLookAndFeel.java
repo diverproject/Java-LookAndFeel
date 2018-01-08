@@ -2,6 +2,7 @@ package org.diverproject.themes.blackdimond;
 
 import org.diverproject.themes.AbstractLookAndFeel;
 import org.diverproject.themes.ComponentProperties;
+import org.diverproject.themes.component.SimpleRootPaneUI;
 
 public class BlackDiamondLookAndFeel extends AbstractLookAndFeel
 {
@@ -14,6 +15,8 @@ public class BlackDiamondLookAndFeel extends AbstractLookAndFeel
 	protected void createDefaultTheme()
 	{
 		theme = new BlackDiamondTheme();
+
+		SimpleRootPaneUI.setDecorateWindows(theme.isDecorateWindows());
 	}
 
 	public BlackDiamondTheme getTheme()

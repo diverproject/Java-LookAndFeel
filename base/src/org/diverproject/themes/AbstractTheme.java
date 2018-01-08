@@ -7,7 +7,11 @@ import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.metal.MetalTheme;
 
+import org.diverproject.themes.colors.CaptionColors;
 import org.diverproject.themes.colors.MenuColors;
+import org.diverproject.themes.colors.TextColors;
+import org.diverproject.themes.colors.TitleColors;
+import org.diverproject.themes.colors.WindowColors;
 
 public abstract class AbstractTheme extends MetalTheme
 {
@@ -61,13 +65,24 @@ public abstract class AbstractTheme extends MetalTheme
 	protected FontUIResource menuFont;
 	protected FontUIResource menuItemFont;
 
+	protected CaptionColors captionColors;
+	protected WindowColors windowColors;
+	protected TextColors textColors;
 	protected MenuColors menuColors;
 	protected MenuColors menuItemColors;
+	protected TitleColors titleColors;
+
+	private boolean decorateWindows;
+	private boolean centerWindowTitle;
 
 	public AbstractTheme()
 	{
+		captionColors = new CaptionColors(WHITE, BLACK);
+		windowColors = new WindowColors(WHITE, DARK_GRAY);
+		textColors = new TextColors(WHITE, DARK_GRAY);
 		menuColors = new MenuColors(WHITE, DARK_GRAY);
 		menuItemColors = new MenuColors(WHITE, DARK_GRAY);
+		titleColors = new TitleColors(WHITE, DARK_GRAY);
 		menuFont = menuTextFont;
 		menuItemFont = menuTextFont;
 	}
@@ -195,6 +210,21 @@ public abstract class AbstractTheme extends MetalTheme
 		return menuItemFont;
 	}
 
+	public CaptionColors getCaptionColors()
+	{
+		return captionColors;
+	}
+
+	public WindowColors getWindowColors()
+	{
+		return windowColors;
+	}
+
+	public TextColors getTextColors()
+	{
+		return textColors;
+	}
+
 	public MenuColors getMenuColors()
 	{
 		return menuColors;
@@ -203,5 +233,30 @@ public abstract class AbstractTheme extends MetalTheme
 	public MenuColors getMenuItemColors()
 	{
 		return menuItemColors;
+	}
+
+	public TitleColors getTitleColors()
+	{
+		return titleColors;
+	}
+
+	public boolean isDecorateWindows()
+	{
+		return decorateWindows;
+	}
+
+	public void setDecorateWindows(boolean decorateWindows)
+	{
+		this.decorateWindows = decorateWindows;
+	}
+
+	public boolean isCenterWindowTitle()
+	{
+		return centerWindowTitle;
+	}
+
+	public void setCenterWindowTitle(boolean centerWindowTitle)
+	{
+		this.centerWindowTitle = centerWindowTitle;
 	}
 }

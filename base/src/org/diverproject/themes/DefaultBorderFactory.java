@@ -4,6 +4,7 @@ import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
 import org.diverproject.themes.border.SimpleMenuBorder;
+import org.diverproject.themes.border.SimpleMenuItemBorder;
 
 public class DefaultBorderFactory implements AbstractBorderFactory
 {
@@ -22,6 +23,12 @@ public class DefaultBorderFactory implements AbstractBorderFactory
 	public Border getPopupMenuBorder()
 	{
 		return BorderFactory.createEmptyBorder(1, 1, 1, 1);
+	}
+
+	@Override
+	public SimpleMenuItemBorder getMenuItemBorder()
+	{
+		return new SimpleMenuItemBorder();
 	}
 
 	@Override
