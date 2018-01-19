@@ -4,9 +4,17 @@ public interface AbstractIconFactory
 {
 	public DefaultIcon getApplicationIcon();
 	public DefaultIcon getIconifyIcon();
+	public DefaultIcon getIconifyHoverIcon();
+	public DefaultIcon getIconifyActiveIcon();
 	public DefaultIcon getMaximizeIcon();
+	public DefaultIcon getMaximizeHoverIcon();
+	public DefaultIcon getMaximizeActiveIcon();
 	public DefaultIcon getMinimizeIcon();
+	public DefaultIcon getMinimizeHoverIcon();
+	public DefaultIcon getMinimizeActiveIcon();
 	public DefaultIcon getCloseIcon();
+	public DefaultIcon getCloseHoverIcon();
+	public DefaultIcon getCloseActiveIcon();
 
 	public DefaultIcon getOptionPaneErrorIcon();
 	public DefaultIcon getOptionPaneWarningIcon();

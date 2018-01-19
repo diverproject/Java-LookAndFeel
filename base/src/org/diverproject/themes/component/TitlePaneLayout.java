@@ -23,7 +23,7 @@ public class TitlePaneLayout implements LayoutManager
 	private int buttonsOffset;
 	private SimpleTitlePane titlePane;
 
-	public static final int MIN_PANE_HEIGHT = 24;
+	public static final int MIN_PANE_HEIGHT = 26;
 
 	public TitlePaneLayout(SimpleTitlePane titlePane)
 	{

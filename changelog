@@ -21,6 +21,12 @@
 //			- MENSAGEM: Breve parágrafo para explicar as alterações feitas.
 //==================================================================================================
 
+19.01.2018 - 0.0.6
+- Adicionado ícones de hover e active além do ícone normal que já estava sendo usado (janela).
+- Atualizado SimpleTitleButton para suportar os múltiplos ícones (hover e active) e problema no paint().
+	- Consecutivamente SimpleTitlePane foi atualizado para carregar os múltiplos ícones.
+	- AbstractIconFactory e DefaultIconFactory também foram atualizados com o mesmo propósito.
+
 08.01.2018 - 0.0.5
 - DefaultIcon não estava carregando os recursos corretamente, toString() adaptado.
 - Pequenos ajustes para que AbstractBorderFactory trabalhe com DefaultIcon ao invés de Icon.

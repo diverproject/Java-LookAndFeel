@@ -6,9 +6,17 @@ public class DefaultIconFactory implements AbstractIconFactory
 
 	private static final DefaultIcon APPLICATION = new DefaultIcon(classPath, "diamond-24");
 	private static final DefaultIcon ICONIFY = new DefaultIcon(classPath, "frame/iconify-24");
+	private static final DefaultIcon ICONIFY_HOVER = new DefaultIcon(classPath, "frame/iconify-hover-24");
+	private static final DefaultIcon ICONIFY_ACTIVE = new DefaultIcon(classPath, "frame/iconify-active-24");
 	private static final DefaultIcon MAXIMIZE = new DefaultIcon(classPath, "frame/maximize-24");
+	private static final DefaultIcon MAXIMIZE_HOVER = new DefaultIcon(classPath, "frame/maximize-hover-24");
+	private static final DefaultIcon MAXIMIZE_ACTIVE = new DefaultIcon(classPath, "frame/maximize-active-24");
 	private static final DefaultIcon MINIMIZE = new DefaultIcon(classPath, "frame/minimize-24");
+	private static final DefaultIcon MINIMIZE_HOVER = new DefaultIcon(classPath, "frame/minimize-hover-24");
+	private static final DefaultIcon MINIMIZE_ACTIVE = new DefaultIcon(classPath, "frame/minimize-active-24");
 	private static final DefaultIcon CLOSE = new DefaultIcon(classPath, "frame/close-24");
+	private static final DefaultIcon CLOSE_HOVER = new DefaultIcon(classPath, "frame/close-hover-24");
+	private static final DefaultIcon CLOSE_ACTIVE = new DefaultIcon(classPath, "frame/close-active-24");
 
 	@Override
 	public DefaultIcon getApplicationIcon()
@@ -17,31 +25,75 @@ public class DefaultIconFactory implements AbstractIconFactory
 	}
 
 	@Override
-	@Deprecated
 	public DefaultIcon getIconifyIcon()
 	{
 		return ICONIFY;
 	}
 
 	@Override
-	@Deprecated
+	public DefaultIcon getIconifyHoverIcon()
+	{
+		return ICONIFY_HOVER;
+	}
+
+	@Override
+	public DefaultIcon getIconifyActiveIcon()
+	{
+		return ICONIFY_ACTIVE;
+	}
+
+	@Override
 	public DefaultIcon getMaximizeIcon()
 	{
 		return MAXIMIZE;
 	}
 
 	@Override
-	@Deprecated
+	public DefaultIcon getMaximizeHoverIcon()
+	{
+		return MAXIMIZE_HOVER;
+	}
+
+	@Override
+	public DefaultIcon getMaximizeActiveIcon()
+	{
+		return MAXIMIZE_ACTIVE;
+	}
+
+	@Override
 	public DefaultIcon getMinimizeIcon()
 	{
 		return MINIMIZE;
 	}
 
 	@Override
-	@Deprecated
+	public DefaultIcon getMinimizeHoverIcon()
+	{
+		return MINIMIZE_HOVER;
+	}
+
+	@Override
+	public DefaultIcon getMinimizeActiveIcon()
+	{
+		return MINIMIZE_ACTIVE;
+	}
+
+	@Override
 	public DefaultIcon getCloseIcon()
 	{
 		return CLOSE;
+	}
+
+	@Override
+	public DefaultIcon getCloseHoverIcon()
+	{
+		return CLOSE_HOVER;
+	}
+
+	@Override
+	public DefaultIcon getCloseActiveIcon()
+	{
+		return CLOSE_ACTIVE;
 	}
 
 	@Override

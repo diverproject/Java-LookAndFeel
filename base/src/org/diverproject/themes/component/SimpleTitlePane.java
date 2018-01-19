@@ -53,10 +53,10 @@ public class SimpleTitlePane extends JComponent implements TitlePaneActions
 
 	public static final String PAINT_ACTIVE = "paintActive";
 
-	private static DefaultIcon iconifyIcon;
-	private static DefaultIcon maximizeIcon;
-	private static DefaultIcon minimizeIcon;
-	private static DefaultIcon closeIcon;
+	private static DefaultIcon iconifyIcons[];
+	private static DefaultIcon maximizeIcons[];
+	private static DefaultIcon minimizeIcons[];
+	private static DefaultIcon closeIcons[];
 
 	private Window window;
 	private Action closeAction;
@@ -353,9 +353,9 @@ public class SimpleTitlePane extends JComponent implements TitlePaneActions
 
 	private void newButtons()
 	{
-		minimizeButton = new SimpleTitleButton(minimizeAction, SimpleTitleButton.ICONIFY, minimizeIcon);
-		maximizeButton = new SimpleTitleButton(maximizeAction, SimpleTitleButton.MAXIMIZE, maximizeIcon);
-		closeButton = new SimpleTitleButton(closeAction, SimpleTitleButton.CLOSE, closeIcon);
+		minimizeButton = new SimpleTitleButton(minimizeAction, SimpleTitleButton.ICONIFY, minimizeIcons);
+		maximizeButton = new SimpleTitleButton(maximizeAction, SimpleTitleButton.MAXIMIZE, maximizeIcons);
+		closeButton = new SimpleTitleButton(closeAction, SimpleTitleButton.CLOSE, closeIcons);
 	}
 
 	private void newMenuBar()
@@ -463,14 +463,14 @@ public class SimpleTitlePane extends JComponent implements TitlePaneActions
 		{
 			if ((state & Frame.MAXIMIZED_BOTH) != 0)
 			{
-				updateMaximizeButton(restoreAction, iconifyIcon);
+				updateMaximizeButton(restoreAction, iconifyIcons);
 				maximizeAction.setEnabled(false);
 				restoreAction.setEnabled(true);
 			}
 
 			else
 			{
-				updateMaximizeButton(maximizeAction, maximizeIcon);
+				updateMaximizeButton(maximizeAction, maximizeIcons);
 				maximizeAction.setEnabled(true);
 				restoreAction.setEnabled(false);
 			}
@@ -487,10 +487,10 @@ public class SimpleTitlePane extends JComponent implements TitlePaneActions
 		}
 	}
 
-	private void updateMaximizeButton(Action action, DefaultIcon icon)
+	private void updateMaximizeButton(Action action, DefaultIcon icons[])
 	{
 		maximizeButton.setAction(action);
-		maximizeButton.setIcon(icon);
+		maximizeButton.setIcons(icons);
 	}
 
 	public boolean isActive()
@@ -563,10 +563,10 @@ public class SimpleTitlePane extends JComponent implements TitlePaneActions
 
 	public static void setIcons()
 	{
-		iconifyIcon = IconFactory().getIconifyIcon();
-		maximizeIcon = IconFactory().getMaximizeIcon();
-		minimizeIcon = IconFactory().getMinimizeIcon();
-		closeIcon = IconFactory().getCloseIcon();
+		iconifyIcons = new DefaultIcon[]	{ IconFactory().getIconifyIcon(),	IconFactory().getIconifyHoverIcon(),	IconFactory().getIconifyActiveIcon() };
+		maximizeIcons = new DefaultIcon[]	{ IconFactory().getMaximizeIcon(),	IconFactory().getMaximizeHoverIcon(),	IconFactory().getMaximizeActiveIcon() };
+		minimizeIcons = new DefaultIcon[]	{ IconFactory().getMinimizeIcon(),	IconFactory().getMinimizeHoverIcon(),	IconFactory().getMinimizeActiveIcon() };
+		closeIcons = new DefaultIcon[]		{ IconFactory().getCloseIcon(),		IconFactory().getCloseHoverIcon(),		IconFactory().getCloseActiveIcon() };
 	}
 
 	private static int getInt(String key)
