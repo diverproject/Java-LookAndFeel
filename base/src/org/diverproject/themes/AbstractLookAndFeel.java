@@ -99,6 +99,7 @@ public abstract class AbstractLookAndFeel extends MetalLookAndFeel
 
 	protected void initBordersDefaults(ComponentProperties properties)
 	{
+		properties.getRootPane().setCustom("frameBorder", getBorderFactory().getRootPaneBorder());
 		properties.getMenuBar().setBorder(getBorderFactory().getMenuBarBorder());
 		properties.getMenu().setBorder(getBorderFactory().getMenuBorder());
 		properties.getPopupMenu().setBorder(getBorderFactory().getPopupMenuBorder());

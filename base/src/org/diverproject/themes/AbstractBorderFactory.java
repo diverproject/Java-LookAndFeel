@@ -5,6 +5,7 @@ import javax.swing.border.Border;
 
 public interface AbstractBorderFactory
 {
+	public Border getRootPaneBorder();
 	public Border getMenuBarBorder();
 	public Border getMenuBorder();
 	public Border getPopupMenuBorder();

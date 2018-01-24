@@ -5,6 +5,7 @@ import org.diverproject.themes.AbstractLookAndFeel;
 import org.diverproject.themes.AbstractTheme;
 import org.diverproject.themes.DiverProjectTheme;
 import org.diverproject.themes.colors.MenuColors;
+import org.diverproject.themes.colors.RootPaneColors;
 import org.diverproject.themes.colors.TitleColors;
 
 public class ThemesUIFunctions
@@ -22,6 +23,11 @@ public class ThemesUIFunctions
 	public static AbstractTheme Theme()
 	{
 		return DiverProjectTheme.getCurrentLookAndFeel().getTheme();
+	}
+
+	public static RootPaneColors RootPaneColors()
+	{
+		return DiverProjectTheme.getCurrentLookAndFeel().getTheme().getRootPaneColors();
 	}
 
 	public static MenuColors MenuColors()

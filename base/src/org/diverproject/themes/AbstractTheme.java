@@ -9,6 +9,7 @@ import javax.swing.plaf.metal.MetalTheme;
 
 import org.diverproject.themes.colors.CaptionColors;
 import org.diverproject.themes.colors.MenuColors;
+import org.diverproject.themes.colors.RootPaneColors;
 import org.diverproject.themes.colors.TextColors;
 import org.diverproject.themes.colors.TitleColors;
 import org.diverproject.themes.colors.WindowColors;
@@ -68,6 +69,7 @@ public abstract class AbstractTheme extends MetalTheme
 	protected CaptionColors captionColors;
 	protected WindowColors windowColors;
 	protected TextColors textColors;
+	protected RootPaneColors rootPaneColors;
 	protected MenuColors menuColors;
 	protected MenuColors menuItemColors;
 	protected TitleColors titleColors;
@@ -80,6 +82,7 @@ public abstract class AbstractTheme extends MetalTheme
 		captionColors = new CaptionColors(WHITE, BLACK);
 		windowColors = new WindowColors(WHITE, DARK_GRAY);
 		textColors = new TextColors(WHITE, DARK_GRAY);
+		rootPaneColors = new RootPaneColors(GRAY, DARK_GRAY);
 		menuColors = new MenuColors(WHITE, DARK_GRAY);
 		menuItemColors = new MenuColors(WHITE, DARK_GRAY);
 		titleColors = new TitleColors(WHITE, DARK_GRAY);
@@ -223,6 +226,11 @@ public abstract class AbstractTheme extends MetalTheme
 	public TextColors getTextColors()
 	{
 		return textColors;
+	}
+
+	public RootPaneColors getRootPaneColors()
+	{
+		return rootPaneColors;
 	}
 
 	public MenuColors getMenuColors()

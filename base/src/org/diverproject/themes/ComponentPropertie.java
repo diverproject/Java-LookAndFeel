@@ -47,4 +47,10 @@ public class ComponentPropertie
 		if (uiDefaults != null)
 			uiDefaults.putDefaults(new Object[] { format("%s.rolloverEnabled", prefix), enabled });
 	}
+
+	public void setCustom(String key, Object object)
+	{
+		if (uiDefaults != null && object != null)
+			uiDefaults.putDefaults(new Object[] { format("%s.%s", prefix, key), object });
+	}
 }
