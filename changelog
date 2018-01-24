@@ -21,6 +21,9 @@
 //			- MENSAGEM: Breve parágrafo para explicar as alterações feitas.
 //==================================================================================================
 
+24.01.2018 - 0.0.7
+- Removido as imagens dos ícones do painel de título que foram adicionadas na raiz do projeto.
+
 19.01.2018 - 0.0.6
 - Adicionado ícones de hover e active além do ícone normal que já estava sendo usado (janela).
 - Atualizado SimpleTitleButton para suportar os múltiplos ícones (hover e active) e problema no paint().
