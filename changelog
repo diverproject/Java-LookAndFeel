@@ -21,6 +21,17 @@
 //			- MENSAGEM: Breve parágrafo para explicar as alterações feitas.
 //==================================================================================================
 
+24.01.2018 - 0.0.9
+- Efeito de brilho na parte superior quando rollover e cor sólida quando estiver armed.
+- Pequenos ajustes em SimpleMenuItemUI para usar as cores através de ThemesUIFunctions.
+- Atualizado a forma como SimpleMenuUI era desenhado afim de que SimpleMenuBorder funcione melhor.
+
+24.01.2018 - 0.0.8
+- Implementação da borda personalizada para ser usada em RootPane.
+	- O mesmo tipo de barra pode vir a ser usado por outros componentes, SimpleBorderLined.
+	- SimpleRootPaneBorder pode ter suas cores personalizadas, por enquanto o tamanho é fixo.
+- Nova opção em ComponentPropertie que permite definir um valor a uma chave especifica, setCustom().
+
 24.01.2018 - 0.0.7
 - Removido as imagens dos ícones do painel de título que foram adicionadas na raiz do projeto.
 

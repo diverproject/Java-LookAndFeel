@@ -18,6 +18,8 @@ import javax.swing.event.MouseInputListener;
 import javax.swing.plaf.basic.BasicGraphicsUtils;
 import javax.swing.plaf.basic.BasicMenuUI;
 
+import org.diverproject.themes.border.SimpleMenuBorder;
+
 public class SimpleMenuUI extends BasicMenuUI
 {
 	public static SimpleMenuUI createUI(JComponent c)
@@ -68,22 +70,23 @@ public class SimpleMenuUI extends BasicMenuUI
 		JMenuItem mi = (JMenuItem) c;
 		ButtonModel model = mi.getModel();
 
+		g.setColor(MenuColors().getBackground());
+		g.fillRect(0, 0, width, height);
+
 		if (!model.isEnabled())
 		{
+			int offset = SimpleMenuBorder.SIZE_INSETS;
+
 			g.setColor(MenuColors().getDisabledBackground());
-			g.fillRect(0, 0, width, height);
+			g.fillRoundRect(offset, offset, width - (offset * 2), height - (offset * 2), offset, offset);
 		}
 
 		if (model.isArmed() || model.isRollover() || (c instanceof JMenu && model.isSelected()))
 		{
-			g.setColor(MenuColors().getSelectedBackground());
-			g.fillRect(0, 0, width, height);
-		}
+			int offset = SimpleMenuBorder.SIZE_INSETS;
 
-		else
-		{
-			g.setColor(MenuColors().getBackground());
-			g.fillRect(0, 0, width, height);
+			g.setColor(MenuColors().getSelectedBackground());
+			g.fillRoundRect(offset, offset, width - (offset * 2), height - (offset * 2), offset, offset);
 		}
 	}
 
@@ -144,7 +147,7 @@ public class SimpleMenuUI extends BasicMenuUI
 
 			if (menu.isRolloverEnabled())
 			{
-				menu.getModel().setRollover(true);
+				menu.getModel().setRollover(false);
 				menuItem.repaint();
 			}
 		}

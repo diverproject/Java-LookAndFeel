@@ -1,5 +1,7 @@
 package org.diverproject.themes.component;
 
+import static org.diverproject.themes.component.ThemesUIFunctions.*;
+
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -13,31 +15,11 @@ import javax.swing.JMenuItem;
 import javax.swing.plaf.basic.BasicGraphicsUtils;
 import javax.swing.plaf.basic.BasicMenuItemUI;
 
-import org.diverproject.themes.AbstractLookAndFeel;
-import org.diverproject.themes.AbstractTheme;
-import org.diverproject.themes.DiverProjectTheme;
-import org.diverproject.themes.colors.MenuColors;
-
 public class SimpleMenuItemUI extends BasicMenuItemUI
 {
 	public static SimpleMenuItemUI createUI(JComponent c)
 	{
 		return new SimpleMenuItemUI();
-	}
-
-	public AbstractLookAndFeel LookAndFeel()
-	{
-		return DiverProjectTheme.getCurrentLookAndFeel();
-	}
-
-	public AbstractTheme Theme()
-	{
-		return DiverProjectTheme.getCurrentLookAndFeel().getTheme();
-	}
-
-	public MenuColors Colors()
-	{
-		return DiverProjectTheme.getCurrentLookAndFeel().getTheme().getMenuItemColors();
 	}
 
 	@Override
@@ -75,19 +57,19 @@ public class SimpleMenuItemUI extends BasicMenuItemUI
 
 		if (!model.isEnabled())
 		{
-			g.setColor(Colors().getDisabledBackground());
+			g.setColor(MenuItemColors().getDisabledBackground());
 			g.fillRect(0, 0, width, height);
 		}
 
 		else if (model.isArmed() || model.isRollover() || model.isSelected())
 		{
-			g.setColor(Colors().getSelectedBackground());
+			g.setColor(MenuItemColors().getSelectedBackground());
 			g.fillRect(0, 0, width, height);
 		}
 
 		else
 		{
-			g.setColor(Colors().getBackground());
+			g.setColor(MenuItemColors().getBackground());
 			g.fillRect(0, 0, width, height);
 		}
 	}
@@ -106,17 +88,17 @@ public class SimpleMenuItemUI extends BasicMenuItemUI
 
 			if (!model.isEnabled())
 			{
-				g2D.setColor(Colors().getDisabledForeground().brighter());
+				g2D.setColor(MenuItemColors().getDisabledForeground().brighter());
 				BasicGraphicsUtils.drawStringUnderlineCharAt(g2D, text, mnemIndex, textRect.x,  textRect.y + fm.getAscent());
-				g2D.setColor(Colors().getDisabledForeground().darker());
+				g2D.setColor(MenuItemColors().getDisabledForeground().darker());
 				BasicGraphicsUtils.drawStringUnderlineCharAt(g2D, text, mnemIndex, textRect.x - 1,  textRect.y + fm.getAscent() - 1);
 			}
 			else
 			{
 				if (model.isArmed() || model.isRollover() || model.isSelected())
-					g2D.setColor(Colors().getSelectedForeground());
+					g2D.setColor(MenuItemColors().getSelectedForeground());
 				else
-					g2D.setColor(Colors().getForeground());
+					g2D.setColor(MenuItemColors().getForeground());
 
 				BasicGraphicsUtils.drawStringUnderlineCharAt(g2D, text, mnemIndex, textRect.x,  textRect.y + fm.getAscent());
 			}

@@ -2,57 +2,49 @@ package org.diverproject.themes.border;
 
 import static org.diverproject.themes.component.ThemesUIFunctions.*;
 
-import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Insets;
 
 import javax.swing.JMenuItem;
 import javax.swing.border.AbstractBorder;
 import javax.swing.plaf.UIResource;
 
+import org.diverproject.util.lang.IntUtil;
+
 public class SimpleMenuBorder extends AbstractBorder implements UIResource
 {
 	private static final long serialVersionUID = 3733125383745956657L;
-	private static final Insets INSETS = new Insets(2, 2, 2, 2);
+
+	public static final int SIZE_INSETS = 3;
+	private static final Insets INSETS = new Insets(SIZE_INSETS, SIZE_INSETS, SIZE_INSETS, SIZE_INSETS);
 
 	@Override
 	public void paintBorder(Component c, Graphics g, int x, int y, int width, int height)
 	{
 		JMenuItem mi = (JMenuItem) c;
 
-		// Borda visível apenas se o menu estiver ativo
 		if (mi.getModel().isArmed() || mi.getModel().isSelected())
 		{
-			Graphics2D g2d = (Graphics2D) g;
-			int offset = 3;
+			g.setColor(MenuColors().getBorderBrighter());
+			g.drawRoundRect(SIZE_INSETS, SIZE_INSETS, width - (SIZE_INSETS * 2), height - (SIZE_INSETS * 2), SIZE_INSETS, SIZE_INSETS);
+		}
 
-			// Preenchimento do espaço fora da borda (Top, Right, Bottom, Left
-			g2d.setColor(MenuColors().getBackground());
-			g2d.setStroke(new BasicStroke(offset * 2)); // Stroke considera width a soma dos dois lados
-			g2d.drawRect(0, 0, width - 1, height - 1);
+		else if (mi.getModel().isRollover())
+		{
+			int offset = SIZE_INSETS + 1;
+			int heightEffect = height / 3;
 
-			// Desenho das bordas
-			int tx = x + offset;
-			int ty = y + offset;
-			int twidth = width - offset;
-			int theight = height - offset;
+			for (int i = 0; i < heightEffect; i++)
+			{
+				int heightOffset = offset + i;
+				int alphaDegree = (int) (64 * (IntUtil.toPorcent(i, heightEffect) / 100f) + 1);
+				Color whiteAlpha = new Color(255, 255, 255, 64 - alphaDegree);
 
-			// Bordas mais escuras (Top, Right, Bottom, Left)
-			g2d.setStroke(new BasicStroke(1));
-
-			g2d.setColor(MenuColors().getBorderDarker());
-			g2d.drawLine(tx + 2    , ty + 0     , twidth - 4, ty + 0);
-			g2d.drawLine(twidth - 2, ty + 1     , twidth - 2, theight - 3);
-			g2d.drawLine(tx + 2    , theight - 2, twidth - 4, theight - 2);
-			g2d.drawLine(tx + 0    , ty + 1     , tx + 0    , theight - 3);
-
-			// Bordas mais claras (Top, Bottom)
-			g2d.setColor(MenuColors().getBorderBrighter().darker());
-			g2d.drawLine(tx + 2    , ty + 1     , twidth - 4, ty + 1);
-			g2d.setColor(MenuColors().getBorderBrighter());
-			g2d.drawLine(tx + 3    , ty + 2     , twidth - 5, ty + 2);
+				g.setColor(whiteAlpha);
+				g.drawLine(offset, heightOffset, width - offset - 1, heightOffset);
+			}
 		}
 	}
 
