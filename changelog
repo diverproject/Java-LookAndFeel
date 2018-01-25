@@ -21,6 +21,9 @@
 //			- MENSAGEM: Breve parágrafo para explicar as alterações feitas.
 //==================================================================================================
 
+24.01.2018 - 0.0.10
+- SimpleBorderLined não definia lineSize e borderSize, também foi necessário um pequeno ajuste no desenho.
+
 24.01.2018 - 0.0.9
 - Efeito de brilho na parte superior quando rollover e cor sólida quando estiver armed.
 - Pequenos ajustes em SimpleMenuItemUI para usar as cores através de ThemesUIFunctions.

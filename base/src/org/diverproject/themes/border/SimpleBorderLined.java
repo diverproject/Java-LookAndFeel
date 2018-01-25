@@ -25,6 +25,8 @@ public class SimpleBorderLined extends AbstractBorder
 		int fullSize = borderSize + lineSize;
 
 		this.colors = colors;
+		this.lineSize = lineSize;
+		this.borderSize = borderSize;
 		this.insets = new Insets(fullSize, fullSize, fullSize, fullSize);
 	}
 
@@ -43,7 +45,7 @@ public class SimpleBorderLined extends AbstractBorder
 		g.setColor(active ? colors.getBorder() : colors.getDisabledBorder());
 
 		for (int i = 1, adjMargin = margin; i <= lineSize; i++, adjMargin++)
-			g.drawRoundRect(adjMargin, adjMargin, bounds.width - bounds.x - (adjMargin * 2), bounds.height - bounds.y - (adjMargin * 2), lineSize, lineSize);
+			g.drawRoundRect(adjMargin, adjMargin, bounds.width - bounds.x - (adjMargin * 2) - 1, bounds.height - bounds.y - (adjMargin * 2) - 1, lineSize, lineSize);
 	}
 
 	@Override
